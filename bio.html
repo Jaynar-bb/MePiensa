@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaynar - Enlaces Oficiales / Bio</title>
+    <title>JAYNAR - Official Bio / Links</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --electric-red: #ff3b30;
+            --deep-neon-blue: #0066ff;
+            --pure-orange: #ff7b00;
+            --background: #060606;
+            --frosted-bg: rgba(10, 10, 10, 0.7);
+        }
+
         body {
             font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             color: #ffffff;
@@ -21,10 +29,10 @@
             box-sizing: border-box;
             position: relative;
             overflow-x: hidden;
-            background-color: #0c0c0c;
+            background-color: var(--background);
         }
 
-        /* Fondo desenfocado dinámico con la foto de perfil */
+        /* Fondo desenfocado dinámico con la foto de perfil (Fire & Ice edition) */
         body::before {
             content: "";
             position: fixed;
@@ -35,82 +43,106 @@
             background-image: url('perfil.jpg');
             background-size: cover;
             background-position: center;
-            filter: blur(40px) brightness(30%);
+            filter: blur(50px) brightness(20%) saturate(200%);
             transform: scale(1.1);
             z-index: -1;
         }
 
-        /* Contenedor principal estilo vidrio esmerilado (frosted glass) */
+        /* Contenedor principal estilo frosted glass */
         .container {
             text-align: center;
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             position: relative;
             z-index: 1;
-            background: rgba(18, 18, 18, 0.65);
-            padding: 35px 25px 25px 25px;
-            border-radius: 28px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            background: var(--frosted-bg);
+            padding: 35px 25px;
+            border-radius: 32px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
             box-sizing: border-box;
             animation: fadeIn 0.8s ease-out;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Avatar del artista con borde degradado: Naranja, Rojo y Azul */
+        /* Borde del Avatar: Naranja (fuego) + Neón Azul (matrícula) */
         .avatar-wrapper {
             position: relative;
-            width: 115px;
-            height: 115px;
-            margin: 0 auto 20px auto;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px auto;
             border-radius: 50%;
-            padding: 4px;
-            background: linear-gradient(135deg, #ff7b00 0%, #ff0000 50%, #0055ff 100%);
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.25);
+            box-sizing: border-box;
+            background: rgba(0,0,0,0.8);
+            
+            /* Borde neón difuminado: Azules y Naranjas */
+            border: 4px solid var(--background);
+            box-shadow: 
+                0 0 1px 2px var(--background),
+                0 0 10px rgba(255, 123, 0, 0.4), /* Fuego naranja */
+                0 0 20px rgba(0, 102, 255, 0.6), /* Neón azul */
+                0 0 35px rgba(0, 102, 255, 0.8), 
+                inset 0 0 10px rgba(0, 102, 255, 0.3);
+            
             overflow: hidden;
+            animation: auraPulse 4s infinite;
         }
 
-        /* Enfoque centrado solo en el rostro */
+        @keyframes auraPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 1px 2px var(--background),
+                    0 0 10px rgba(255, 123, 0, 0.3),
+                    0 0 20px rgba(0, 102, 255, 0.5),
+                    0 0 30px rgba(0, 102, 255, 0.7);
+            }
+            50% {
+                box-shadow: 
+                    0 0 1px 2px var(--background),
+                    0 0 15px rgba(255, 123, 0, 0.5),
+                    0 0 25px rgba(0, 102, 255, 0.7),
+                    0 0 40px rgba(0, 102, 255, 1);
+            }
+        }
+
+        /* Avatar: Encuadre Cerrado al Rostro (TRUCO CSS) */
         .avatar {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            object-position: center 30%; /* Ajusta el eje vertical para centrar la cara */
-            transform: scale(1.35); /* Hace zoom al rostro hacia el centro */
-            border: 3px solid #121212;
+            
+            /* -- AJUSTE DE ZOOM AL ROSTRO -- */
+            transform: scale(1.6); /* Zoom fuerte hacia el centro */
+            object-position: center 30%; /* Ajuste vertical para la cara */
+            
             display: block;
             box-sizing: border-box;
+            border: 3px solid var(--background);
+            filter: contrast(110%) saturate(110%);
         }
 
         h1 {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 30px;
+            font-weight: 800;
             margin: 0 0 6px 0;
-            letter-spacing: 1px;
-            background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
         }
 
         h2 {
             font-size: 14px;
-            color: #ff3b30; /* Cambiado a rojo estético */
-            margin: 0 0 30px 0;
-            font-weight: 500;
-            letter-spacing: 2px;
+            color: var(--electric-red);
+            margin: 0 0 35px 0;
+            font-weight: 600;
+            letter-spacing: 3px;
             text-transform: uppercase;
         }
 
@@ -118,7 +150,7 @@
         .links-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
@@ -126,147 +158,121 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: rgba(255, 255, 255, 0.04);
+            background-color: rgba(255, 255, 255, 0.03);
             color: #ffffff;
             text-decoration: none;
-            padding: 15px 18px;
-            border-radius: 16px;
+            padding: 16px 20px;
+            border-radius: 18px;
             font-weight: 600;
             transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.02);
             position: relative;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         .btn-link:hover {
-            background-color: rgba(255, 255, 255, 0.09);
-            border-color: rgba(255, 255, 255, 0.12);
-            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-link:active {
-            transform: translateY(0);
-        }
+        .btn-link:active { transform: translateY(0); }
 
         .btn-content {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 15px;
             text-align: left;
         }
 
         .btn-icon {
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 24px; height: 24px;
+            display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
+            color: #b0b0b0;
         }
 
-        .btn-text {
-            display: flex;
-            flex-direction: column;
-        }
+        .btn-text { display: flex; flex-direction: column; }
 
         .platform-name {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 600;
             line-height: 1.2;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 9px;
         }
 
-        .platform-action {
-            font-size: 11px;
-            color: #a7a7a7;
-            font-weight: 400;
-            margin-top: 2px;
-        }
+        .platform-action { font-size: 11px; color: #a7a7a7; font-weight: 400; margin-top: 2px; }
 
-        .arrow {
-            font-size: 13px;
-            color: #8e8e93;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
+        .arrow { font-size: 14px; color: #8e8e93; transition: transform 0.3s ease; }
+        .btn-link:hover .arrow { transform: translateX(5px); color: #ffffff; }
 
-        .btn-link:hover .arrow {
-            transform: translateX(4px);
-            color: #ffffff;
-        }
-
-        /* Destacado: "Me Piensa" en Tonos Rojos */
+        /* Destacado: "Me Piensa" (Rojo Fuego con Destello Neón Azul) */
         .btn-featured {
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(130, 0, 0, 0.35) 100%);
-            border: 1px solid rgba(255, 50, 50, 0.25);
-            animation: pulseGlow 3s infinite ease-in-out;
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.1) 0%, rgba(130, 0, 0, 0.25) 100%);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            box-shadow: 
+                0 0 10px rgba(255, 59, 48, 0.05),
+                inset 0 0 10px rgba(0, 102, 255, 0.1);
+            animation: featuredPulse 3.5s infinite;
+        }
+        
+        @keyframes featuredPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 10px rgba(255, 59, 48, 0.05),
+                    inset 0 0 10px rgba(0, 102, 255, 0.08);
+            }
+            50% {
+                box-shadow: 
+                    0 0 20px rgba(255, 59, 48, 0.2),
+                    inset 0 0 15px rgba(0, 102, 255, 0.3);
+            }
         }
         
         .btn-featured:hover {
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.3) 0%, rgba(180, 0, 0, 0.45) 100%);
-            border-color: rgba(255, 100, 100, 0.4);
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 59, 48, 0.25) 0%, rgba(180, 0, 0, 0.35) 100%);
+            border-color: rgba(255, 59, 48, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 59, 48, 0.3);
         }
 
-        .btn-featured .btn-icon {
-            color: #ff3b30;
-        }
+        .btn-featured .btn-icon { color: var(--electric-red); }
 
         .badge-new {
             font-size: 9px;
-            background: linear-gradient(135deg, #ff3b30 0%, #aa0000 100%);
-            padding: 3px 7px;
+            font-weight: 800;
+            padding: 3px 8px;
             border-radius: 20px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            color: #ffffff;
+            letter-spacing: 1px;
             text-transform: uppercase;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(255, 0, 0, 0.1), 0 0 15px rgba(255, 60, 0, 0.05);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(255, 0, 0, 0.25), 0 0 25px rgba(255, 60, 0, 0.15);
-            }
+            
+            /* Fire gradient */
+            background: linear-gradient(135deg, var(--electric-red) 0%, var(--pure-orange) 100%);
+            
+            box-shadow: 
+                0 0 8px rgba(255, 59, 48, 0.6),
+                0 0 3px rgba(0, 102, 255, 0.2);
         }
 
         /* Diseños de Bordes y Colores de cada Plataforma */
-        .btn-spotify {
-            border-left: 4px solid #1DB954;
-        }
-        .btn-spotify:hover {
-            box-shadow: 0 8px 24px rgba(29, 185, 84, 0.12);
-        }
-        .btn-spotify .btn-icon {
-            color: #1DB954;
-        }
+        .btn-spotify { border-left: 4px solid #1DB954; }
+        .btn-spotify:hover { box-shadow: 0 8px 24px rgba(29, 185, 84, 0.1); }
+        .btn-spotify .btn-icon { color: #1DB954; }
 
-        .btn-apple {
-            border-left: 4px solid #fc3c44;
-        }
-        .btn-apple:hover {
-            box-shadow: 0 8px 24px rgba(252, 60, 68, 0.12);
-        }
-        .btn-apple .btn-icon {
-            color: #fc3c44;
-        }
+        .btn-apple { border-left: 4px solid #fc3c44; }
+        .btn-apple:hover { box-shadow: 0 8px 24px rgba(252, 60, 68, 0.1); }
+        .btn-apple .btn-icon { color: #fc3c44; }
 
-        .btn-youtube {
-            border-left: 4px solid #ff0000;
-        }
-        .btn-youtube:hover {
-            box-shadow: 0 8px 24px rgba(255, 0, 0, 0.12);
-        }
-        .btn-youtube .btn-icon {
-            color: #ff0000;
-        }
+        .btn-youtube { border-left: 4px solid #ff0000; }
+        .btn-youtube:hover { box-shadow: 0 8px 24px rgba(255, 0, 0, 0.1); }
+        .btn-youtube .btn-icon { color: #ff0000; }
 
         .footer {
             font-size: 11px;
-            color: rgba(255, 255, 255, 0.3);
-            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.25);
+            margin-top: 35px;
             letter-spacing: 0.5px;
         }
     </style>
@@ -275,7 +281,7 @@
 
     <div class="container">
         <div class="avatar-wrapper">
-            <img src="perfil.jpg" alt="Jaynar Perfil" class="avatar">
+            <img src="perfil.jpg" alt="JAYNAR Perfil" class="avatar">
         </div>
         
         <h1>JAYNAR</h1>
@@ -285,7 +291,7 @@
             <a href="links.html" class="btn-link btn-featured">
                 <div class="btn-content">
                     <div class="btn-icon">
-                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <circle cx="12" cy="12" r="3"></circle>
                         </svg>
@@ -307,7 +313,7 @@
                     </div>
                     <div class="btn-text">
                         <span class="platform-name">Spotify</span>
-                        <span class="platform-action">Seguir en Spotify</span>
+                        <span class="platform-action">Seguir Perfil Oficial</span>
                     </div>
                 </div>
                 <span class="arrow">➔</span>
@@ -322,7 +328,7 @@
                     </div>
                     <div class="btn-text">
                         <span class="platform-name">Apple Music</span>
-                        <span class="platform-action">Escuchar en Apple Music</span>
+                        <span class="platform-action">Escuchar Catálogo</span>
                     </div>
                 </div>
                 <span class="arrow">➔</span>
@@ -337,7 +343,7 @@
                     </div>
                     <div class="btn-text">
                         <span class="platform-name">YouTube</span>
-                        <span class="platform-action">Suscribirse en YouTube</span>
+                        <span class="platform-action">Suscribirse al Canal</span>
                     </div>
                 </div>
                 <span class="arrow">➔</span>
