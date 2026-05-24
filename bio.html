@@ -88,14 +88,16 @@
 
         /* IMAGE DE PERFIL: ENCUADRE DE ROSTRO TOTALMENTE CENTRADO */
         .avatar {
-           width: 100%;
+          width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            transform: scale(1.7); /* Zoom ideal para enfocar el rostro */
             
-            /* CONTROL TOTAL: Mueve los porcentajes de abajo a tu gusto */
-            object-position: 90% 38%; 
+            /* El zoom se queda igual */
+            transform: scale(1.7); 
+            
+            /* ¡ESTO ES LO QUE VA A HACER QUE SÍ SE MUEVA! */
+            transform-origin: 70% 38%; 
             
             border: 3px solid #121212;
             display: block;
