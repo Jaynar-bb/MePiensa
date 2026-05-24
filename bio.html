@@ -88,21 +88,20 @@
 
         /* TU ENCUADRE ORIGINAL (EL QUE SÍ FUNCIONABA PERFECTO) */
         .avatar {
-           width: 100%;
+         width: 100%;
             height: 100%;
             border-radius: 50%;
+            object-fit: cover;
             border: 3px solid #121212;
             box-sizing: border-box;
-            background-image: url('perfil.jpg');
-            background-repeat: no-repeat;
+            display: block;
 
-            /* 1. CONTROL DE ZOOM: El 170% es el tamaño del zoom. Si quieres más cerca, súbelo (ej. 190%) */
-            background-size: 170%; 
-
-            /* 2. CONTROL DE MOVIMIENTO TOTAL: 
-               - El primer número (65%) mueve de Izquierda a Derecha.
-               - El segundo número (20%) mueve de Arriba a Abajo. */
-            background-position: 98% 30%;
+            /* TUS NUEVOS CONTROLES:
+               - scale(1.8) es el zoom.
+               - translateX(-15px) mueve de izquierda a derecha. (Usa números negativos para ir a la izquierda, positivos para ir a la derecha).
+               - translateY(25px) mueve de arriba a abajo. (Usa números positivos para bajar la foto, negativos para subirla).
+            */
+            transform: scale(1.8) translateX(-30px) translateY(50px);
         }
 
         h1 {
